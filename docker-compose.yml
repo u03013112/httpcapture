@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  openresty:
+    image: u03013112/openresty
+    container_name: open
+    volumes:
+      - ./ngx.conf/:/etc/nginx/conf.d/
+      - ./log/:/var/log/nginx/
+    tty: true
+    ports:
+      - 2002:80
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
